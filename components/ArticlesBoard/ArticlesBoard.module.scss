@@ -3,3 +3,51 @@
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+
+.heading {
+  color: var(--gray-800);
+  font-size: var(--text-2xl);
+}
+
+.label {
+  display: block;
+  margin-top: 0.65rem;
+  color: var(--gray-700);
+  font-size: var(--text-huge);
+}
+
+.searchBar {
+  width: 100%;
+  border: none;
+  padding: 0.65rem 1rem;
+  margin-top: 0.35rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--gray-700);
+  background-color: var(--white);
+  letter-spacing: 0.025rem;
+  font-size: var(--text-big);
+  font-weight: 700;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.item {
+  padding: 3rem;
+  margin: 0.5rem 0;
+  background-color: var(--white);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.article {
+}
+
+.articleHeading {
+}

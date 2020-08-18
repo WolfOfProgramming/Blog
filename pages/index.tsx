@@ -5,34 +5,29 @@ import Header from "../components/Header/Header";
 import ArticlesBoard from "../components/ArticlesBoard/ArticlesBoard";
 import Footer from "../components/Footer/Footer";
 import { InferGetStaticPropsType } from "next";
+import { getSortedArticlesData } from "../lib/articles";
 
 export async function getStaticProps() {
-  const articles = [
-    { title: "Hello", thumbnail: "images/forest.jpg" },
-    { title: "Hello", thumbnail: "images/forest.jpg" },
-    { title: "Hello", thumbnail: "images/forest.jpg" },
-    { title: "Hello", thumbnail: "images/forest.jpg" },
-    { title: "Hello", thumbnail: "images/forest.jpg" },
-    { title: "Hello", thumbnail: "images/forest.jpg" },
-  ];
+  const articlesData = await getSortedArticlesData();
   return {
     props: {
-      articles,
+      articlesData,
     },
   };
 }
 
 export default function Home({
-  articles,
+  articlesData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
       <Head>
         <title>Blog</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
       <Header />
-      <ArticlesBoard articles={articles} />
+      <ArticlesBoard articlesData={articlesData} />
       <Footer />
     </div>
   );

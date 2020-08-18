@@ -1,13 +1,13 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './Introduction.module.scss';
+import React from "react";
+import clsx from "clsx";
+import styles from "./Introduction.module.scss";
 
 export default function Introduction() {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.heading}>
-        Learn about writing <br />
-        clean and professional code
+        Learn about writing clean
+        <br /> and professional code
       </h1>
       <p className={styles.paragraph}>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br />
@@ -18,13 +18,13 @@ export default function Introduction() {
       <div className={styles.buttonContainer}>
         <button
           className={clsx(styles.button, styles.buttonPrimary)}
-          type='button'
+          type="button"
         >
           Read latest article
         </button>
         <button
           className={clsx(styles.button, styles.buttonSecondary)}
-          type='button'
+          type="button"
         >
           Join newsletter
         </button>
