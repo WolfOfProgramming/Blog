@@ -1,9 +1,10 @@
 import React from "react";
 import { getAllArticlesIds, getArticleData } from "../../lib/articles";
 import { InferGetStaticPropsType } from "next";
-import styles from "../../styles/Home.module.scss";
+import styles from "../../styles/Article.module.scss";
 import Head from "next/head";
-import Header from "../../components/Header/Header";
+import Navigation from "../../components/shared/Navigation/Navigation";
+import Container from "../../components/shared/Container/Container";
 
 export default function Article({
   articleData: { title, date, tags, contentHtml },
@@ -14,10 +15,27 @@ export default function Article({
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <article
-        dangerouslySetInnerHTML={{ __html: articleData.contentHtml }}
-      ></article>
+      <header className={styles.header}>
+        <Container>
+          <Navigation />
+        </Container>
+      </header>
+      <article>
+        <Container>
+          <ul className={styles.tags}>
+            {tags.map((tag) => (
+              <li className={styles.tag} key={tag}>
+                {tag}
+              </li>
+            ))}
+          </ul>
+          <h1 className={styles.articleHeading}>{title}</h1>
+          <section
+            className={styles.articleContent}
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
+        </Container>
+      </article>
     </div>
   );
 }
@@ -30,7 +48,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const articleData = await getArticleData(params.id);
   return {
     props: {

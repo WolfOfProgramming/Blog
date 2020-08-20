@@ -19,14 +19,15 @@ export async function getStaticProps() {
 export default function Home({
   articlesData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const latestArticleId = articlesData[0].id;
   return (
     <div className={styles.container}>
       <Head>
-        <title>Blog</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Liiicode</title>
+        <link rel="icon" href="/favicon.png" />
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </Head>
-      <Header />
+      <Header latestArticleId={latestArticleId} />
       <ArticlesBoard articlesData={articlesData} />
       <Footer />
     </div>

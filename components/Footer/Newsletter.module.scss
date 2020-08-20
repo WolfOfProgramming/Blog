@@ -1,7 +1,9 @@
+@use '../../styles/media.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 450px;
   width: 100%;
   max-width: 400px;
   padding: 1rem;
@@ -12,7 +14,11 @@
 
 .heading {
   color: var(--white);
-  font-size: var(--text-xl);
+  font-size: var(--text-huge);
+
+  @media (min-width: media.$media-medium) {
+    font-size: var(--text-xl);
+  }
 }
 
 .paragraph {

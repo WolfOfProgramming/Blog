@@ -6,7 +6,9 @@ export default function Navigation() {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <a className={styles.heading}>Blog</a>
+        <a className={styles.heading}>
+          <img src="/favicon.png" alt="Logo" />
+        </a>
       </Link>
       <ul className={styles.ul}>
         <li className={styles.li}>

@@ -13,33 +13,26 @@ const ArticleData = z.object({
   tags: z.array(z.string()),
 });
 
-type ArticleData = z.infer<typeof ArticleData>;
-
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
 
 const articlesDirectory = path.join(process.cwd(), "content");
-const sortByDate = (a, b) => (a.date < b.date ? 1 : -1);
 
 async function getSortedArticlesData() {
   const fileNames = await readdir(articlesDirectory);
   const articlesData = await Promise.all(
     fileNames.map(async (fileName) => {
-      try {
-        const id = fileName.replace(/\.md$/, "");
-        const filePath = path.join(articlesDirectory, fileName);
-        const fileContent = await readFile(filePath);
-        const articleData = ArticleData.parse(matter(fileContent).data);
-        return {
-          id,
-          ...articleData,
-        };
-      } catch (e) {
-        return null;
-      }
+      const id = fileName.replace(/\.md$/, "");
+      const filePath = path.join(articlesDirectory, fileName);
+      const fileContent = await readFile(filePath);
+      const articleData = ArticleData.parse(matter(fileContent).data);
+      return {
+        id,
+        ...articleData,
+      };
     })
   );
-  return articlesData.filter((x) => x !== null).sort(sortByDate);
+  return articlesData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 async function getAllArticlesIds() {

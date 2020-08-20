@@ -6,6 +6,7 @@ import Container from "../shared/Container/Container";
 type Props = {
   articlesData: Array<{
     title: string;
+    description: string;
     date: string;
     id: string;
     tags: string[];
@@ -29,13 +30,24 @@ export default function ArticlesBoard({ articlesData }: Props) {
           onChange={(e) => setSearchBarValue(e.target.value)}
         />
         <ul className={styles.list}>
-          {articlesData.map(({ title, date, id }) => (
+          {articlesData.map(({ title, description, id, tags }) => (
             <li className={styles.item} key={id}>
               <article className={styles.article}>
-                <Link href="/articles/[id]" as={`/articles/${id}`}>
-                  <a>{title}</a>
-                </Link>
-                <time>{date}</time>
+                <header className={styles.articleHeader}>
+                  <h3>
+                    <Link href="/articles/[id]" as={`/articles/${id}`}>
+                      <a className={styles.articleHeading}>{title}</a>
+                    </Link>
+                  </h3>
+                </header>
+                <ul className={styles.tags}>
+                  {tags.map((tag) => (
+                    <li className={styles.tag} key={tag}>
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+                <p className={styles.articleDescription}>{description}</p>
               </article>
             </li>
           ))}
