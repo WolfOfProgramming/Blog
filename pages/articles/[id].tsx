@@ -1,13 +1,13 @@
 import React from "react";
 import { getAllArticlesIds, getArticleData } from "../../lib/articles";
-import { InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType, GetStaticProps, GetStaticPaths } from "next";
 import styles from "../../styles/Article.module.scss";
 import Head from "next/head";
 import Navigation from "../../components/shared/Navigation/Navigation";
 import Container from "../../components/shared/Container/Container";
 
 export default function Article({
-  articleData: { title = "", tags = [], contentHtml = "" },
+  articleData: { title, tags, contentHtml },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
@@ -40,19 +40,21 @@ export default function Article({
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async function getStaticPaths() {
   const paths = await getAllArticlesIds();
   return {
     paths,
     fallback: true,
   };
-}
+};
 
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps = async function getStaticProps({
+  params,
+}) {
   const articleData = await getArticleData(params.id);
   return {
     props: {
       articleData,
     },
   };
-}
+};
