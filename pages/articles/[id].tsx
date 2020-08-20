@@ -7,7 +7,7 @@ import Navigation from "../../components/shared/Navigation/Navigation";
 import Container from "../../components/shared/Container/Container";
 
 export default function Article({
-  articleData: { title, date, tags, contentHtml },
+  articleData: { title = "", tags = [], contentHtml = "" },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
