@@ -10,13 +10,21 @@
   font-weight: 700;
   line-height: 1;
   max-width: 500px;
+  @media (min-width: media.$media-medium) {
+    font-size: var(--text-3xl);
+  }
 }
 
 .paragraph {
   margin-top: 1rem;
-  font-size: var(--text-big);
+  font-size: var(--text-normal);
+  line-height: 1.5;
   color: var(--gray-800);
   max-width: 500px;
+
+  @media (min-width: media.$media-medium) {
+    font-size: var(--text-big);
+  }
 }
 
 .buttonContainer {

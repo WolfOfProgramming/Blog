@@ -17,10 +17,6 @@
   color: var(--gray-700);
   font-size: var(--text-normal);
   font-weight: 700;
-
-  @media (min-width: media.$media-medium) {
-    font-size: var(--text-huge);
-  }
 }
 
 .searchBar {
@@ -74,18 +70,18 @@
 .tag {
   color: var(--gray-700);
   font-weight: 700;
-  font-size: var(--text-big);
+  font-size: var(--text-normal);
   margin-right: 1rem;
 }
 
 .articleHeading {
   color: var(--primary);
-  font-size: var(--text-huge);
+  font-size: var(--text-big);
   font-weight: 700;
 }
 
 .articleDescription {
   color: var(--gray-800);
-  font-size: var(--text-big);
+  font-size: var(--text-normal);
   margin-top: 0.65rem;
 }

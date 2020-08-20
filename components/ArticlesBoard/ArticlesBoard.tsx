@@ -3,14 +3,26 @@ import Link from "next/link";
 import styles from "./ArticlesBoard.module.scss";
 import Container from "../shared/Container/Container";
 
+const filterBySearchBarValue = (searchBarValue: string) => ({
+  title,
+  description,
+}: ArticleData) => {
+  const words = searchBarValue.split(" ");
+  return words.every(
+    (word) => title.includes(word) || description.includes(word)
+  );
+};
+
+type ArticleData = {
+  title: string;
+  description: string;
+  date: string;
+  id: string;
+  tags: string[];
+};
+
 type Props = {
-  articlesData: Array<{
-    title: string;
-    description: string;
-    date: string;
-    id: string;
-    tags: string[];
-  }>;
+  articlesData: Array<ArticleData>;
 };
 export default function ArticlesBoard({ articlesData }: Props) {
   const [searchBarValue, setSearchBarValue] = useState("");
@@ -30,27 +42,29 @@ export default function ArticlesBoard({ articlesData }: Props) {
           onChange={(e) => setSearchBarValue(e.target.value)}
         />
         <ul className={styles.list}>
-          {articlesData.map(({ title, description, id, tags }) => (
-            <li className={styles.item} key={id}>
-              <article className={styles.article}>
-                <header className={styles.articleHeader}>
-                  <h3>
-                    <Link href="/articles/[id]" as={`/articles/${id}`}>
-                      <a className={styles.articleHeading}>{title}</a>
-                    </Link>
-                  </h3>
-                </header>
-                <ul className={styles.tags}>
-                  {tags.map((tag) => (
-                    <li className={styles.tag} key={tag}>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-                <p className={styles.articleDescription}>{description}</p>
-              </article>
-            </li>
-          ))}
+          {articlesData
+            .filter(filterBySearchBarValue(searchBarValue))
+            .map(({ title, description, id, tags }) => (
+              <li className={styles.item} key={id}>
+                <article className={styles.article}>
+                  <header className={styles.articleHeader}>
+                    <h3>
+                      <Link href="/articles/[id]" as={`/articles/${id}`}>
+                        <a className={styles.articleHeading}>{title}</a>
+                      </Link>
+                    </h3>
+                  </header>
+                  <ul className={styles.tags}>
+                    {tags.map((tag) => (
+                      <li className={styles.tag} key={tag}>
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className={styles.articleDescription}>{description}</p>
+                </article>
+              </li>
+            ))}
         </ul>
       </Container>
     </main>

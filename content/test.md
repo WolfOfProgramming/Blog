@@ -1,7 +1,7 @@
 ---
 title: 'Two Forms of Pre-rendering'
 date: '2020-01-01'
-description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.'
+description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur autem deserunt eius fugit harum illum inventore ipsam nesciunt perspiciatis quasi quidem, rem similique voluptas!'
 tags: ['Html', 'Css', 'Programming']
 ---
 

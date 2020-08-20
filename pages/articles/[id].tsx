@@ -5,6 +5,7 @@ import styles from "../../styles/Article.module.scss";
 import Head from "next/head";
 import Navigation from "../../components/shared/Navigation/Navigation";
 import Container from "../../components/shared/Container/Container";
+import Footer from "../../components/Footer/Footer";
 
 export default function Article({
   articleData: { title, tags, contentHtml },
@@ -36,6 +37,7 @@ export default function Article({
           />
         </Container>
       </article>
+      <Footer />
     </div>
   );
 }
