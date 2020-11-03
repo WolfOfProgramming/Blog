@@ -1,4 +1,4 @@
-Source for my blog.
+Source code for my blog.
 
 Technologies used:
 
