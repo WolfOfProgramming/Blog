@@ -1,0 +1,18 @@
+@use '../../../styles/media.scss';
+
+.container {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0 auto;
+
+  @media (min-width: media.$media-medium) {
+    max-width: media.$media-medium;
+  }
+  @media (min-width: media.$media-big) {
+    max-width: media.$media-big;
+  }
+  @media (min-width: media.$media-huge) {
+    max-width: media.$media-huge;
+  }
+}

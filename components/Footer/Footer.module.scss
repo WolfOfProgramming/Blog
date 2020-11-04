@@ -1,0 +1,32 @@
+@use '../../styles/media.scss';
+
+.footer {
+  background-color: var(--white);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: media.$media-huge) {
+    flex-direction: row;
+  }
+}
+
+.heading {
+  color: var(--gray-800);
+  font-size: var(--text-3xl);
+}
+
+.greetingHeading {
+  color: var(--gray-700);
+  font-size: var(--text-2xl);
+}
+
+.description {
+  color: var(--gray-700);
+  font-size: var(--text-big);
+  line-height: 1.5;
+}
